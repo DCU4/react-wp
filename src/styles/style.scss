@@ -40,7 +40,8 @@ html {
     margin: 0 auto;
     #app {
 
-      header {
+      header,
+      footer {
         padding: 40px 0;
         ul {
           display: flex;
@@ -49,6 +50,15 @@ html {
           li {
             list-style-type: none;
            
+          }
+        }
+      }
+      footer {
+        padding: 80px 0;
+        ul {
+          justify-content: flex-start;
+          li {
+            padding-right: 15px;;
           }
         }
       }
