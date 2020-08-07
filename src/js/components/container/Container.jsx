@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import Page from "../presentational/Page.jsx";
 import Posts from "../presentational/Posts.jsx";
 import Home from "../presentational/Home.jsx";
-import Header from "../presentational/Header.jsx";
+import {Header} from "../presentational/Header.jsx";
+import {Footer} from "../presentational/Footer.jsx";
 import Gallery from "../presentational/Gallery.jsx";
 import {
   BrowserRouter as Router,
@@ -19,7 +20,6 @@ class Container extends Component {
     this.state = {
       pageRoutes: []
     };
-    // this.addClasses = this.addClasses.bind(this);
   }
 
   getMenuItems = async () => {
@@ -55,9 +55,9 @@ class Container extends Component {
         </header>
         <main className="container">
         <Switch>
-          <Route exact path="/">
+          {/* <Route exact path="/">
             <Home />
-          </Route>
+          </Route> */}
           <Route path="/press">
             <Posts />
           </Route>
@@ -67,7 +67,7 @@ class Container extends Component {
           {pageRoutes.map((route,i) => {
             if (route.url && route.post_status == 'publish'){
               const slug = route.url.split('/')[3];
-              if (slug != ''){
+              // if (slug != ''){
                 return (
                   <Route key={i} path={`/${slug}`}>
                     <Page
@@ -75,14 +75,16 @@ class Container extends Component {
                     />
                   </Route>
                 )
-              }
+              // }
             }
           })}
         </Switch>
           
         </main>
         <footer>
-          
+          <Footer
+            menuItems={pageRoutes}
+          />
         </footer>
         </Router>
       </div>
