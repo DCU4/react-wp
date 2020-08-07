@@ -58,7 +58,7 @@ class Posts extends Component {
   render() {
     let { path, url } = this.props.match;
     let posts = this.state.posts;
-    let showSinglePost = this.state.showSinglePost;
+    // let showSinglePost = this.state.showSinglePost;
     if (this.state.posts.length == 0) {
       return <p>hol up...</p>;
     }
@@ -66,7 +66,6 @@ class Posts extends Component {
     return (
 
       <section className="press-page" >
-        {/* {!showSinglePost ?  ( */}
         <Switch>
           <Route exact path={path}>
             <div className="press-post-basic" >
@@ -88,7 +87,7 @@ class Posts extends Component {
             </div>
           </Route>
 
-          <Route path={`${path}/:post`}>
+          <Route path={`${path}/:postPath`}>
             <SinglePost
               posts={posts}
             />
@@ -103,22 +102,16 @@ class Posts extends Component {
 export default withRouter(Posts);
 
 export const SinglePost = (props) => {
-  let { post } = useParams();
-  // console.log(props.posts)
+  let { postPath } = useParams();
+  let post = props.posts.find(post => post.post_name == postPath);
   return (
     <div>
-      {props.posts.map((p, i) => {
-        if (post == p.post_name) {
-          return (
-            <div key={i} className="single-post">
-              <h3>{p.post_title}</h3>
-              <p>{post}</p>
-            </div>
-          );
-        }
-
-      })
-      }
+      <div className="single-post">
+        <h3>{post.post_title}</h3>
+        <img src={post.thumbnail} />
+        <article dangerouslySetInnerHTML={{ __html: post.post_content }}></article>
+        <p>{postPath}</p>
+      </div>
     </div>
-  )
+  );
 }
