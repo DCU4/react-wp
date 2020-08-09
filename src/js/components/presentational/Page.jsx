@@ -23,7 +23,6 @@ export default class Page extends Component {
     });
 
     const data = await api_call.json();
-    // console.log(data);
     
     if (data) {
       this.setState({
@@ -40,6 +39,7 @@ export default class Page extends Component {
 
   render() {
     let page = this.state.pages.find(page => page.post_title == this.props.routeInfo.title);
+    
     if (!this.state.pages || page == undefined) {
       return <p>hol up...</p>;
     }

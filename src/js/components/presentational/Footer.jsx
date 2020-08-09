@@ -11,6 +11,8 @@ export const Footer = (props) => {
     let menuItems = props.menuItems;
     return (
       <ul>
+        <li>{`${new Date().getFullYear()} No Rights Whatsoever Reserved`}</li>
+        <li>|</li>
         {menuItems && menuItems.map((item,i)=> {
           if (item.url && item.post_status == 'publish'){
             const slug = item.url.split('/')[3];
