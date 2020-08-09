@@ -114,12 +114,14 @@ export default withRouter(Posts);
 export const SinglePost = (props) => {
   let { postPath } = useParams();
   let post = props.posts.find(post => post.post_name == postPath);
+  let metaDesc = post.meta_data._yoast_wpseo_metadesc[0] ? post.meta_data._yoast_wpseo_metadesc[0] : "";
   return (
     <div>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{post.post_title}</title>
-        <meta name="description"  content={post.meta_data._yoast_wpseo_metadesc[0]} />
+        
+        <meta name="description"  content={metaDesc} />
         <link rel="canonical" href="https://fishtaco.lndo.site" />
       </Helmet>
       <div className="single-post">
