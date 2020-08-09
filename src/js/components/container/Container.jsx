@@ -83,12 +83,20 @@ class Container extends Component {
               } else {
                 // home page
                 return (
+                  <>
                   <Route key={i} exact path="/">
                     <Home />
                     <Page
                       routeInfo={route}
                     />
                   </Route>
+                  <Route key={i} exact path="/react-wp">
+                    <Home />
+                    <Page
+                      routeInfo={route}
+                    />
+                  </Route>
+                  </>
                 )
               }
             }
