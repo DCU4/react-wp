@@ -3,7 +3,7 @@ module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     path: __dirname + '/docs/',
-    publicPath: '/'
+    publicPath: '/react-wp/'
   },
   module: {
     rules: [
