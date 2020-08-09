@@ -72,7 +72,7 @@ class Container extends Component {
           {pageRoutes.map((route,i) => {
             if (route.url && route.post_status == 'publish'){
               const slug = route.url.split('/')[3];
-              if (slug != ''){
+              if (slug != '' || slug != '/react-wp'){
                 return (
                   <Route key={i} path={`/${slug}`}>
                     <Page
@@ -80,7 +80,7 @@ class Container extends Component {
                     />
                   </Route>
                 )
-              } else {
+              } else if(slug==''){
                 // home page
                 return (
                   <>
@@ -90,13 +90,17 @@ class Container extends Component {
                       routeInfo={route}
                     />
                   </Route>
+                 
+                  </>
+                )
+              } else {
+                return (
                   <Route key={i} path="/react-wp">
                     <Home />
                     <Page
                       routeInfo={route}
                     />
                   </Route>
-                  </>
                 )
               }
             }
