@@ -78,7 +78,7 @@ class Locations extends Component {
       <section className="press-page" >
         <Helmet>
           <meta charSet="utf-8" />
-          <title>{url.toUpperCase()}</title>
+          <title>Locations</title>
           <link rel="canonical" href="ttps://fishtaco.lndo.site" />
         </Helmet>
         <Switch>

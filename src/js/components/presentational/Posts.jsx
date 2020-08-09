@@ -76,6 +76,9 @@ class Posts extends Component {
     return (
 
       <section className="press-page" >
+        <Helmet>
+          <title>Press</title>
+        </Helmet>
         <Switch>
           <Route exact path={path}>
             <div className="press-post-basic" >

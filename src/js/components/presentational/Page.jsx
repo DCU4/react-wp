@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Helmet} from "react-helmet";
 
 export default class Page extends Component {
   constructor(props) {
@@ -46,6 +47,9 @@ export default class Page extends Component {
     return (
       
       <section className="page" >
+        <Helmet>
+          <title>{page.post_title}</title>
+        </Helmet>
         <header>
           <h1>{page.post_title}</h1>
         </header>
