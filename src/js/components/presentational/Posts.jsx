@@ -114,7 +114,7 @@ export default withRouter(Posts);
 export const SinglePost = (props) => {
   let { postPath } = useParams();
   let post = props.posts.find(post => post.post_name == postPath);
-  let metaDesc = post.meta_data._yoast_wpseo_metadesc[0] ? post.meta_data._yoast_wpseo_metadesc[0] : "";
+  let metaDesc = post.meta_data._yoast_wpseo_metadesc ? post.meta_data._yoast_wpseo_metadesc[0] : "";
   return (
     <div>
       <Helmet>
