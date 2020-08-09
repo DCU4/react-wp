@@ -17,7 +17,7 @@ export default class Gallery extends Component {
     }
     // const url = 'https://fishtaco.lndo.site/wp-json/wp/v2/posts/?per_page=5';
     const url = 'https://updates-fishtaco.pantheonsite.io/wp-json/custom-api/v1/all-gallery-images/';
-    // const url = 'https://fishtaco.lndo.site/wp-json/custom-api/v1/all-posts/';
+    // const url = 'https://fishtaco.lndo.site/wp-json/custom-api/v1/all-gallery-images/';
     const api_call = await fetch(`${url}`, {
       "method": "GET",
       // "headers": headers
@@ -46,13 +46,13 @@ export default class Gallery extends Component {
     // this.getClasses();
   }
 
-  componentDidUpdate() {
-  //   
-    
-  }
 
   componentWillUnmount() {
     // clearTimeout(this.timer);
+    let img = document.querySelectorAll('.gallery img');
+    img.forEach(i => {
+      i.classList.remove('load');
+    });
   }
 
   render() {
@@ -67,7 +67,7 @@ export default class Gallery extends Component {
       <section  className="gallery" >
         {images.map((image,i)=> {
           return (
-                <img onLoad={this.getClasses} key={i} src={image} />
+                <img onLoad={this.getClasses} key={i} src={`${image.url}?v=2`} alt={image.alt}/>
               )
           
         })}
