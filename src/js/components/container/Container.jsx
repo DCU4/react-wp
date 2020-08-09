@@ -90,7 +90,7 @@ class Container extends Component {
                       routeInfo={route}
                     />
                   </Route>
-                  <Route key={i} exact path="/react-wp">
+                  <Route key={i} path="/react-wp">
                     <Home />
                     <Page
                       routeInfo={route}
