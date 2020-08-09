@@ -1,7 +1,7 @@
 {
-  "name": "notes-app",
+  "name": "wp-rest-api",
   "version": "1.0.0",
-  "description": "An app for note taking to replace the regular iOS app",
+  "description": "wp-rest-api",
   "main": "index.js",
   "scripts": {
     "predeploy": "npm run build",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DCU4/magic-mirror.git"
+    "url": "git+https://github.com/DCU4/react-wp.git.git"
   },
   "author": "Dylan Connor",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DCU4/magic-mirror/issues"
+    "url": "https://github.com/DCU4/react-wp.git/issues"
   },
-  "homepage": "https://github.com/DCU4/magic-mirror#readme",
+  "homepage": "https://github.com/DCU4/react-wp.git#readme",
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
@@ -38,7 +38,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.3.1",
+    "react-helmet": "latest"
   },
   "dependencies": {
     "react-router-dom": "^5.2.0"
