@@ -7,6 +7,7 @@ import {
   withRouter,
   Switch
 } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 class Posts extends Component {
   constructor(props) {
@@ -16,7 +17,6 @@ class Posts extends Component {
       singlePostShowing: false
     }
   }
-
 
   getPosts = async () => {
 
@@ -40,6 +40,16 @@ class Posts extends Component {
         showSinglePost: false
       })
     }
+
+    // yoast REST API
+    // const headUrl = 'https://updates-fishtaco.pantheonsite.io/wp-json/yoast/v1/get_head?url=https://updates-fishtaco.pantheonsite.io/press/'
+    // const api_call_headUrl = await fetch(`${headUrl}`, {
+    //   "method": "GET",
+    //   // "headers": headers
+    // });
+    // const headData = await api_call_headUrl.json();
+    // console.log(headData);
+
   }
 
   showSinglePost = () => {
@@ -106,6 +116,12 @@ export const SinglePost = (props) => {
   let post = props.posts.find(post => post.post_name == postPath);
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{post.post_title}</title>
+        <meta name="description"  content={post.meta_data._yoast_wpseo_metadesc[0]} />
+        <link rel="canonical" href="https://fishtaco.lndo.site" />
+      </Helmet>
       <div className="single-post">
         <h3>{post.post_title}</h3>
         <img src={post.thumbnail} />
