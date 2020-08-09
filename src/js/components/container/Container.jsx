@@ -6,6 +6,7 @@ import Home from "../presentational/Home.jsx";
 import {Header} from "../presentational/Header.jsx";
 import {Footer} from "../presentational/Footer.jsx";
 import Gallery from "../presentational/Gallery.jsx";
+import Locations from "../presentational/Locations.jsx";
 import {
   BrowserRouter as Router,
   Switch,
@@ -51,6 +52,7 @@ class Container extends Component {
         <header>
           <Header 
             menuItems={pageRoutes}
+            // headContent
           />
         </header>
         <main className="container">
@@ -64,6 +66,9 @@ class Container extends Component {
           <Route path="/gallery">
             <Gallery />
           </Route>
+          <Route path="/locations">
+            <Locations />
+          </Route>
           {pageRoutes.map((route,i) => {
             if (route.url && route.post_status == 'publish'){
               const slug = route.url.split('/')[3];
@@ -76,8 +81,10 @@ class Container extends Component {
                   </Route>
                 )
               } else {
+                // home page
                 return (
                   <Route key={i} exact path="/">
+                    <Home />
                     <Page
                       routeInfo={route}
                     />
