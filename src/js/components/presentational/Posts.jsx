@@ -32,7 +32,7 @@ class Posts extends Component {
     });
 
     const data = await api_call.json();
-    console.log(data);
+    // console.log(data);
 
     if (data) {
       this.setState({
@@ -118,7 +118,7 @@ export const SinglePost = (props) => {
   let { postPath } = useParams();
   let post = props.posts.find(post => post.post_name == postPath);
   let metaDesc = post.meta_data._yoast_wpseo_metadesc ? post.meta_data._yoast_wpseo_metadesc[0] : "";
-  console.log(metaDesc);
+  // console.log(metaDesc);
   return (
     <div>
       <Helmet>
