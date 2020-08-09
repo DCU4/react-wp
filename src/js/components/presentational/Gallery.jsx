@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Helmet} from "react-helmet";
 
 export default class Gallery extends Component {
   constructor(props) {
@@ -65,6 +66,9 @@ export default class Gallery extends Component {
     return (
       
       <section  className="gallery" >
+        <Helmet>
+          <title>Gallery</title>
+        </Helmet>
         {images.map((image,i)=> {
           return (
                 <img onLoad={this.getClasses} key={i} src={`${image.url}?v=2`} alt={image.alt}/>
