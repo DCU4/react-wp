@@ -9,8 +9,9 @@ export const Header = (props) => {
     let location = useLocation();
     let path = location.pathname;
     let menuItems = props.menuItems;
+    console.log(path)
     return (
-      <ul>
+      <ul style={path == '/react-wp' ? {opacity:0} : {opacity:1}}>
         <h1><Link to="/">Hello there.</Link></h1>
         {menuItems && menuItems.map((item,i)=> {
           if (item.url && item.post_status == 'publish'){

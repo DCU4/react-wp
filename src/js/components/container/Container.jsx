@@ -7,6 +7,7 @@ import {Header} from "../presentational/Header.jsx";
 import {Footer} from "../presentational/Footer.jsx";
 import Gallery from "../presentational/Gallery.jsx";
 import Locations from "../presentational/Locations.jsx";
+import Enter from "../presentational/Enter.jsx";
 import {
   BrowserRouter as HashRouter,
   Switch,
@@ -68,6 +69,9 @@ class Container extends Component {
             <Home />
 
           </Route> */}
+          <Route path="/react-wp">
+            <Enter />
+          </Route>
           <Route path="/press">
             <Posts 
               classes={this.getClasses}
