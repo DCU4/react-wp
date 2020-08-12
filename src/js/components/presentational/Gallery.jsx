@@ -35,13 +35,6 @@ export default class Gallery extends Component {
 
   }
 
-  getClasses = e => {
-    const img = e.target;
-    img.classList.add('load')
-
-  }
-
-
   componentDidMount() {
     this.getGallery();
     // this.getClasses();
@@ -59,6 +52,7 @@ export default class Gallery extends Component {
   render() {
     let images = this.state.images;
     // let className = this.state.className;
+    console.log(this.props.getClasses);
     if (this.state.images.length == 0) {
       return <p>hol up...</p>;
     }
@@ -71,7 +65,7 @@ export default class Gallery extends Component {
         </Helmet>
         {images.map((image,i)=> {
           return (
-                <img onLoad={this.getClasses} key={i} src={`${image.url}?v=2`} alt={image.alt}/>
+                <img onLoad={this.props.classes} key={i} src={`${image.url}?v=2`} alt={image.alt}/>
               )
           
         })}

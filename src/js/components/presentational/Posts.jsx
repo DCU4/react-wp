@@ -87,11 +87,15 @@ class Posts extends Component {
                 // const slug = item.url.split('/')[3];
                 return (
                   <div key={i} className="press-post-content">
-                    <Link onClick={this.showSinglePost} to={`${url}/${post.post_name}`}><img alt="" src={post.thumbnail} /></Link>
+                    <Link onClick={this.showSinglePost} to={`${url}/${post.post_name}`}>
+                      <img onLoad={this.props.classes}alt="" src={post.thumbnail} />
+                    </Link>
 
                     <div className="date-title">
                       <p className="date">{post.post_date}</p>
-                      <Link onClick={this.showSinglePost} to={`${url}/${post.post_name}`}><h2 className="press-title">{post.post_title}</h2></Link>
+                      <Link onClick={this.showSinglePost} to={`${url}/${post.post_name}`}>
+                        <h2 className="press-title">{post.post_title}</h2>
+                        </Link>
                     </div>
 
                   </div>
@@ -103,6 +107,7 @@ class Posts extends Component {
           <Route path={`${path}/:postPath`}>
             <SinglePost
               posts={posts}
+              onLoad={this.props.classes}
             />
           </Route>
         </Switch>
@@ -130,7 +135,7 @@ export const SinglePost = (props) => {
       </Helmet>
       <div className="single-post">
         <h3>{post.post_title}</h3>
-        <img src={post.thumbnail} />
+        <img onLoad={props.onLoad} src={post.thumbnail} />
         <article dangerouslySetInnerHTML={{ __html: post.post_content }}></article>
         <p>{postPath}</p>
       </div>

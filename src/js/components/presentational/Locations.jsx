@@ -89,11 +89,15 @@ class Locations extends Component {
                 // const slug = item.url.split('/')[3];
                 return (
                   <div key={i} className="press-post-content">
-                    <Link onClick={this.showSinglePost} to={`${url}/${post.post_name}`}><img alt="" src={post.thumbnail} /></Link>
+                    <Link onClick={this.showSinglePost} to={`${url}/${post.post_name}`}>
+                      <img onLoad={this.props.classes} alt="" src={post.thumbnail} />
+                      </Link>
 
                     <div className="date-title">
                       <p className="date">{post.post_date}</p>
-                      <Link onClick={this.showSinglePost} to={`${url}/${post.post_name}`}><h2 className="press-title">{post.post_title}</h2></Link>
+                      <Link onClick={this.showSinglePost} to={`${url}/${post.post_name}`}>
+                        <h2 className="press-title">{post.post_title}</h2>
+                      </Link>
                     </div>
 
                   </div>
@@ -105,6 +109,7 @@ class Locations extends Component {
           <Route path={`${path}/:postPath`}>
             <SingleLocation
               posts={posts}
+              onLoad={this.props.classes}
             />
           </Route>
         </Switch>
@@ -119,17 +124,18 @@ export default withRouter(Locations);
 export const SingleLocation = (props) => {
   let { postPath } = useParams();
   let post = props.posts.find(post => post.post_name == postPath);
+  let metaDesc = post.meta_data._yoast_wpseo_metadesc ? post.meta_data._yoast_wpseo_metadesc[0] : ''
   return (
     <div>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{post.post_title}</title>
-        <meta name="description"  content={post.meta_data._yoast_wpseo_metadesc[0]} />
+        <meta name="description"  content={metaDesc} />
         <link rel="canonical" href="ttps://fishtaco.lndo.site" />
       </Helmet>
       <div className="single-post">
         <h3>{post.post_title}</h3>
-        <img src={post.thumbnail} />
+        <img onLoad={props.onLoad} src={post.thumbnail} />
         <article dangerouslySetInnerHTML={{ __html: post.post_content }}></article>
         <p>{postPath}</p>
       </div>

@@ -8,7 +8,7 @@ import {Footer} from "../presentational/Footer.jsx";
 import Gallery from "../presentational/Gallery.jsx";
 import Locations from "../presentational/Locations.jsx";
 import {
-  BrowserRouter as Router,
+  BrowserRouter as HashRouter,
   Switch,
   Route,
   Link
@@ -22,6 +22,12 @@ class Container extends Component {
       pageRoutes: []
     };
   }
+
+  getClasses = e => {
+    const img = e.target;
+    img.classList.add('load')
+  }
+
 
   getMenuItems = async () => {
 
@@ -48,10 +54,11 @@ class Container extends Component {
     let pageRoutes = this.state.pageRoutes;
     return (
       <div>
-        <Router>
+        <HashRouter>
         <header>
           <Header 
             menuItems={pageRoutes}
+            classes={this.getClasses}
             // headContent
           />
         </header>
@@ -59,15 +66,22 @@ class Container extends Component {
         <Switch>
           {/* <Route exact path="/">
             <Home />
+
           </Route> */}
           <Route path="/press">
-            <Posts />
+            <Posts 
+              classes={this.getClasses}
+            />
           </Route>
           <Route path="/gallery">
-            <Gallery />
+            <Gallery 
+              classes={this.getClasses}
+            />
           </Route>
           <Route path="/locations">
-            <Locations />
+            <Locations
+              classes={this.getClasses}
+            />
           </Route>
           {pageRoutes.map((route,i) => {
             if (route.url && route.post_status == 'publish'){
@@ -78,6 +92,7 @@ class Container extends Component {
                   <Route key={i} path={`/${slug}`}>
                     <Page
                       routeInfo={route}
+                      classes={this.getClasses}
                     />
                   </Route>
                 )
@@ -88,6 +103,7 @@ class Container extends Component {
                     <Home />
                     <Page
                       routeInfo={route}
+                      classes={this.getClasses}
                     />
                   </Route>
                 )
@@ -102,7 +118,7 @@ class Container extends Component {
             menuItems={pageRoutes}
           />
         </footer>
-        </Router>
+        </HashRouter>
       </div>
       
     );
